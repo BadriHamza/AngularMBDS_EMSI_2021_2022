@@ -12,23 +12,22 @@ import { Assignment } from '../assignment.model';
 export class AssignmentDetailComponent implements OnInit {
   assignmentTransmis?: Assignment;
 
-  constructor(
-    private assignmentsService: AssignmentsService,
-    private route: ActivatedRoute,
-    private router: Router,
-    private authService: AuthService
-  ) {}
+  constructor( private assignmentsService: AssignmentsService,
+               private route: ActivatedRoute,
+               private router: Router,
+               private authService: AuthService) {}
 
   ngOnInit(): void {
     // on va récupérer l'id de l'assignment dans l'URL...
     // + force la conversion de string vers number
     let id: number = +this.route.snapshot.params['id'];
 
-    console.log('DANS COMPOSANT DETAIL id = ' + id);
+    console.log("DANS COMPOSANT DETAIL id = " + id);
 
-    this.assignmentsService.getAssignment(id).subscribe((assignment) => {
+    this.assignmentsService.getAssignment(id)
+    .subscribe((assignment) => {
       this.assignmentTransmis = assignment;
-    });
+    })
   }
 
   onAssignmentRendu() {

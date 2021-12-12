@@ -10,9 +10,10 @@
   <h2>Liste des assignments :</h2>
   <p>Nb total d'assignments = {{totalDocs}}</p>
   <p>Nb de pages = {{totalPages}}</p>
-  
+
   <p>Nb d'assignments par page :
-    <input type="range" min="1" max="100" step="1" (change)="changeLimit()" [(ngModel)]="sliderLimit"> {{sliderLimit}} &nbsp;
+    <input type="range" min="1" max="100" step="1" (change)="changeLimit()" [(ngModel)]="sliderLimit"> {{sliderLimit}}
+    &nbsp;
   </p>
 
   <div class="container2">
@@ -21,6 +22,40 @@
     <button mat-stroked-button (click)="pageSuivante()" [disabled]="!hasNextPage">SUIVANT</button>
     <button mat-stroked-button (click)="dernierePage()" [disabled]="!hasNextPage">DERNIERE PAGE</button>
   </div>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+    
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+    
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="nom">
+      <th mat-header-cell *matHeaderCellDef> Nom </th>
+      <td mat-cell *matCellDef="let element"> {{element.nom}} </td>
+    </ng-container>
+
+    <!-- dateDeRendu -->
+    <ng-container matColumnDef="dateDeRendu">
+      <th mat-header-cell *matHeaderCellDef> Date de rendu </th>
+      <td mat-cell *matCellDef="let element"> {{element.dateDeRendu}} </td>
+    </ng-container>
+
+    <!-- Rendu Column -->
+    <ng-container matColumnDef="rendu">
+      <th mat-header-cell *matHeaderCellDef> Rendu </th>
+      <td mat-cell *matCellDef="let element"> {{element.rendu}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
 
   <mat-list *ngFor="let assignment of assignments; index as i">
     <nav>

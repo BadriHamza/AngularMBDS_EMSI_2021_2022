@@ -12,24 +12,31 @@ export class AssignmentsComponent implements OnInit {
   couleur = 'orange';
   ajoutActive = false;
 
-  assignments: Assignment[] = [];
+
+
+
+  assignments:Assignment[] = [];
+  //pour la table
+  displayedColumns: string[] = ['id','nom', 'dateDeRendu', 'rendu'];
+  dataSource?:any;
+  
   // slider pour changer la limite
-  sliderLimit:number=20;
+  sliderLimit: number = 20;
 
   // Pour pagination
   page: number = 1;
   limit: number = 20;
-  totalDocs:number=0;
-  totalPages: number=0;
+  totalDocs: number = 0;
+  totalPages: number = 0;
   hasPrevPage: boolean = false;
   prevPage: number = 0;
-  hasNextPage: boolean=false;
+  hasNextPage: boolean = false;
   nextPage: number = 0;
 
-  constructor(private assignmentsService: AssignmentsService) {}
+  constructor(private assignmentsService: AssignmentsService) { }
 
   ngOnInit(): void {
-    console.log('Appelé avant affichage');
+    console.log("Appelé avant affichage");
     // appelée avant l'affichage du composant
     // on demande les donnnées au service de gestion des assignments
 
@@ -39,15 +46,17 @@ export class AssignmentsComponent implements OnInit {
   getAssignments() {
     this.assignmentsService.getAssignmentsPagine(this.page, this.limit).subscribe((data) => {
       this.assignments = data.docs;
+     //this.assignments=this.assignments;
+      this.dataSource = data.docs;
       this.page = data.page;
-       this.limit = data.limit;
-       this.totalDocs = data.totalDocs;
-       this.totalPages = data.totalPages;
-       this.hasPrevPage = data.hasPrevPage;
-       this.prevPage = data.prevPage;
-       this.hasNextPage = data.hasNextPage;
-       this.nextPage = data.nextPage;
-       console.log("données reçues");
+      this.limit = data.limit;
+      this.totalDocs = data.totalDocs;
+      this.totalPages = data.totalPages;
+      this.hasPrevPage = data.hasPrevPage;
+      this.prevPage = data.prevPage;
+      this.hasNextPage = data.hasNextPage;
+      this.nextPage = data.nextPage;
+      console.log("données reçues");
     });
   }
 
@@ -58,13 +67,13 @@ export class AssignmentsComponent implements OnInit {
   }
 
   pagePrecedente() {
-      this.page = this.prevPage ;
-      this.getAssignments();
+    this.page = this.prevPage;
+    this.getAssignments();
   }
 
   pageSuivante() {
-      this.page = this.nextPage ;
-      this.getAssignments();
+    this.page = this.nextPage;
+    this.getAssignments();
   }
 
   dernierePage() {

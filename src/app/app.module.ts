@@ -12,10 +12,10 @@ import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSliderModule } from '@angular/material/slider'
-
+import {MatTableModule} from '@angular/material/table'
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-
+import { CdkTableModule } from '@angular/cdk/table';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AssignmentsComponent } from './assignments/assignments.component';
@@ -42,8 +42,8 @@ import { EditAssignmentComponent } from './assignments/edit-assignment/edit-assi
     BrowserAnimationsModule, MatButtonModule, MatIconModule, MatDividerModule,
     MatFormFieldModule, MatInputModule, MatDatepickerModule, MatNativeDateModule,
     MatListModule, MatCardModule, MatCheckboxModule, MatSlideToggleModule,
-    MatSliderModule,
-    HttpClientModule,
+    MatSliderModule,MatTableModule,
+    HttpClientModule,CdkTableModule,
     RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})
   ],
   providers: [],

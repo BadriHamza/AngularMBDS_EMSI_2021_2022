@@ -29,7 +29,7 @@ export class AppComponent {
     .subscribe(() => {
       // ok, les 1000 données ont bien été insérées...
       console.log("TOUTES LES DONNEES ONT BIEN ETE INSEREES");
-
+      //ne va pas pourtant matcher par deafut, on va voir pourquoi.
       this.router.navigate(["/home"]);
     });
   }

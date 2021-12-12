@@ -18,6 +18,16 @@
 }
 
 .container2 {
-  display:flex;
+  color: black;
   flex-direction: row;
+  text-align: center;
+}
+table {
+  width: 100%;
+}
+.wsst{
+  text-align: center;
+}
+.affi{
+  text-align: center;
 }

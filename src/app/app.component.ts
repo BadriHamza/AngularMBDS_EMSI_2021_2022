@@ -10,6 +10,7 @@ import { AuthService } from './shared/auth.service';
 })
 
 export class AppComponent {
+  val='HAMZA BADRI ';
   titre = 'Application de gestion des assignments';
 
   constructor(private authService:AuthService,
@@ -33,4 +34,5 @@ export class AppComponent {
       this.router.navigate(["/home"]);
     });
   }
+
 }

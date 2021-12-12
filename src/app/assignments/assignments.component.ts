@@ -11,7 +11,7 @@ import { Assignment } from './assignment.model';
 export class AssignmentsComponent implements OnInit {
   couleur = 'orange';
   ajoutActive = false;
-
+  
 
 
 

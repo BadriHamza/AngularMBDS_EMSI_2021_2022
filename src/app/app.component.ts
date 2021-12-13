@@ -17,13 +17,13 @@ export class AppComponent {
               private assignmentsService:AssignmentsService,
               private router:Router) {}
 
-  loginLogout() {
-    if(this.authService.loggedIn) {
-      this.authService.logOut();
-    } else {
-      this.authService.logIn();
-    }
-  }
+  //loginLogout() {
+    //if(this.authService.loggedIn) {
+     //this.authService.logOut();
+    //} else {
+     // this.authService.logIn();
+   // }
+ // }
 
   genererDonneesDeTest() {
     this.assignmentsService.peuplerBDAvecForkJoin()

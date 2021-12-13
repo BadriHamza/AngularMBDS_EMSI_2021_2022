@@ -31,3 +31,39 @@ table {
 .affi{
   text-align: center;
 }
+
+table {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  min-width: 500px;
+}
+th.mat-header-cell {
+  text-align: left;
+  max-width: 300px;
+}
+th.mat-sort-header-sorted {
+  color: black;
+}
+a {
+  font-family: helvetica;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.mat-row:hover .mat-cell {
+  border-color: green;
+}
+.mat-row .mat-cell {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+}
+.example-container {
+  height: 300px;
+  max-width: 100%;
+  overflow: auto;
+}
+.mat-paginator-sticky {
+  bottom: 0px;
+  position: sticky;
+  z-index: 10;
+}

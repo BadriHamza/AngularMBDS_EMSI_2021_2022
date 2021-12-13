@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ignoreElements } from 'rxjs';
 import { AssignmentsService } from '../shared/assignments.service';
 import { Assignment } from './assignment.model';
+import {​​​​​​ AuthService }​​​​​​ from '../shared/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
+
 
 @Component({
   selector: 'app-assignments',
@@ -17,8 +21,9 @@ export class AssignmentsComponent implements OnInit {
 
   assignments:Assignment[] = [];
   //pour la table
-  displayedColumns: string[] = ['id','nom', 'dateDeRendu', 'rendu'];
+  displayedColumns: string[] = ['id','nom', 'dateDeRendu', 'rendu','update','delete'];
   dataSource?:any;
+  clickedRows = new Set<Assignment>();
   
   // slider pour changer la limite
   sliderLimit: number = 20;
@@ -33,7 +38,7 @@ export class AssignmentsComponent implements OnInit {
   hasNextPage: boolean = false;
   nextPage: number = 0;
 
-  constructor(private assignmentsService: AssignmentsService) { }
+  constructor(private assignmentsService: AssignmentsService,   private authService:AuthService ) { }
 
   ngOnInit(): void {
     console.log("Appelé avant affichage");
@@ -84,5 +89,11 @@ export class AssignmentsComponent implements OnInit {
   premierePage() {
     this.page = 1;
     this.getAssignments();
+  }
+  onSupp(assignment: Assignment) {
+    this.assignmentsService.deleteAssignment(assignment).subscribe((response) => {
+      this.getAssignments();
+      console.log(response.message);
+    });
   }
 }

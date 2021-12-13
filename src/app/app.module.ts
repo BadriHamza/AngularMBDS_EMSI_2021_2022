@@ -27,6 +27,7 @@ import { AddAssignmentComponent } from './assignments/add-assignment/add-assignm
 
 import { routes } from './app.routing';
 import { EditAssignmentComponent } from './assignments/edit-assignment/edit-assignment.component';
+import { LoginComponent } from './login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +36,8 @@ import { EditAssignmentComponent } from './assignments/edit-assignment/edit-assi
     NonrenduDirective,
     AssignmentDetailComponent,
     AddAssignmentComponent,
-    EditAssignmentComponent
+    EditAssignmentComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule, FormsModule,

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -6,9 +7,14 @@ import { Injectable } from '@angular/core';
 export class AuthService {
   loggedIn = false;
 
-  constructor() { }
+  constructor(private router:Router) { }
+  user={
+    email: "voila.voila@gmail.com",
+    passwod: "voila",
+    isAdmin: true
+  }
 
-  logIn() {
+  logIn(email:string, password:string) {
     // dans la vraie vie, on devrait ici passer un login et un password
     // puis envoyer une requête sur un web service distant qui va
     // vérifier si login/password sont ok (dans une BD ou via le
@@ -16,11 +22,16 @@ export class AuthService {
     // sinon on redirige vers la page de connexion avec un message d'erreur
 
     // nous on simplifie pour le moment.
-    this.loggedIn = true;
+    if (email== this.user.email &&password==this.user.passwod){
+      this.loggedIn=true;
+      this.router.navigate(['/home']);
+    }
+    
   }
 
   logOut() {
     // typiquement : appelé par le bouton de deconnexion...
+    
     this.loggedIn = false;
   }
 

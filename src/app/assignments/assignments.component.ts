@@ -96,4 +96,5 @@ export class AssignmentsComponent implements OnInit {
       console.log(response.message);
     });
   }
+  
 }
